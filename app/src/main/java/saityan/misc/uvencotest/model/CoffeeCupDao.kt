@@ -13,7 +13,7 @@ interface CoffeeCupDao {
     fun getAllCups(): Flow<List<CoffeeCup>>
 
     @Query("SELECT * FROM coffee_cups_table WHERE id = :id")
-    suspend fun getCupById(id: Int): CoffeeCup
+    fun getCupById(id: Int): Flow<CoffeeCup>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCup(cup: CoffeeCup)

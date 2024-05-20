@@ -21,9 +21,14 @@ fun HomeScreen(
 
     LazyColumn {
         itemsIndexed(cups) { index, coffeeCup ->
-            Text(coffeeCup.name, modifier = Modifier.clickable {
-                navController.navigate(Screen.Edit.route)
-            })
+            Text(
+                coffeeCup.name,
+                modifier = coffeeCup.id?.let {
+                    Modifier.clickable {
+                        navController.navigate(Screen.Edit.createRoute(it))
+                    }
+                } ?: Modifier
+            )
         }
     }
 }

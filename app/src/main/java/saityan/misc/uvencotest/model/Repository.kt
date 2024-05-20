@@ -32,7 +32,7 @@ class Repository @Inject constructor(
         }
     }
 
-    suspend fun getCupById(id: Int): CoffeeCup {
+    fun getCupById(id: Int): Flow<CoffeeCup> {
         return coffeeDatabase.coffeeCupDao().getCupById(id)
     }
 

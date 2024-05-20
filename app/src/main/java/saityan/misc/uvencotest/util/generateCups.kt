@@ -10,7 +10,7 @@ fun generateCups(): List<CoffeeCup> {
             val isFree = it % 10 == 0 // Mark every 10th cup as free
 
             val cup = CoffeeCup(
-                name = "Coffee Cup $it",
+                name = "Coffee Cup ${it + 1}",
                 price = price,
                 isFree = isFree,
                 cupVariant = CupVariant.NORMAL
