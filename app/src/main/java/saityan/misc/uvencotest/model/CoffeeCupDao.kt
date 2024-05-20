@@ -17,4 +17,7 @@ interface CoffeeCupDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCup(cup: CoffeeCup)
+
+    @Query("SELECT COUNT(*) FROM coffee_cups_table")
+    suspend fun getCupCount(): Int
 }

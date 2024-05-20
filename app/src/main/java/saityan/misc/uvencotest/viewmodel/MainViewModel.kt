@@ -10,15 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: Repository
+    repository: Repository
 ): ViewModel() {
     val cups = repository.getAllCups()
-
-    fun insertMockData(list: List<CoffeeCup>) {
-        viewModelScope.launch {
-            list.forEach { cup ->
-                repository.addCup(cup)
-            }
-        }
-    }
 }
