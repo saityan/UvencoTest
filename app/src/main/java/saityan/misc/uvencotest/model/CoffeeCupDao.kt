@@ -11,6 +11,9 @@ interface CoffeeCupDao {
     @Query("SELECT * FROM coffee_cups_table")
     fun getAllCups(): List<CoffeeCup>
 
+    @Query("SELECT * FROM coffee_cups_table WHERE id = :id")
+    suspend fun getCupById(id: String): CoffeeCup
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addCup(): CoffeeCup
+    suspend fun addCup(cup: CoffeeCup)
 }

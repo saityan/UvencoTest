@@ -8,4 +8,12 @@ class Repository @Inject constructor(
     fun getAllCups(): List<CoffeeCup> {
         return coffeeDatabase.coffeeCupDao().getAllCups()
     }
+
+    suspend fun getCupById(id: String): CoffeeCup {
+        return coffeeDatabase.coffeeCupDao().getCupById(id)
+    }
+
+    suspend fun addCup(cup: CoffeeCup) {
+        coffeeDatabase.coffeeCupDao().addCup(cup)
+    }
 }
