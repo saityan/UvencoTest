@@ -12,7 +12,7 @@ interface CoffeeCupDao {
     fun getAllCups(): List<CoffeeCup>
 
     @Query("SELECT * FROM coffee_cups_table WHERE id = :id")
-    suspend fun getCupById(id: String): CoffeeCup
+    fun getCupById(id: Int): CoffeeCup
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCup(cup: CoffeeCup)

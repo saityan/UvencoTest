@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditViewModel @Inject constructor(
-    repository: Repository,
+    repository: Repository
 ) : ViewModel() {
 
 }

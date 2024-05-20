@@ -9,7 +9,7 @@ class Repository @Inject constructor(
         return coffeeDatabase.coffeeCupDao().getAllCups()
     }
 
-    suspend fun getCupById(id: String): CoffeeCup {
+    fun getCupById(id: Int): CoffeeCup {
         return coffeeDatabase.coffeeCupDao().getCupById(id)
     }
 
