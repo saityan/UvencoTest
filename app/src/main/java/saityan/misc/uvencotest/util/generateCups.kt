@@ -13,7 +13,7 @@ fun generateCups(): List<CoffeeCup> {
                 name = "Coffee Cup ${it + 1}",
                 price = price,
                 isFree = isFree,
-                cupVariant = CupVariant.NORMAL
+                cupVariant = CupVariant.CREAM
             )
             add(cup)
         }
