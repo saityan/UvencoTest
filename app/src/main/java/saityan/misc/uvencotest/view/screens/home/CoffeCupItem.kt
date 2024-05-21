@@ -23,12 +23,13 @@ fun CoffeeCupItem(
     name: String,
     price: String,
     cupVariant: CupVariant,
+    isFree: Boolean,
     onClick: (Int) -> Unit
 ) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 3.dp, vertical = 8.dp)
+            .padding(horizontal = 3.dp, vertical = 12.dp)
             .background(
                 brush = Brush.verticalGradient(
                     colors = listOf(
@@ -37,7 +38,11 @@ fun CoffeeCupItem(
                     )
                 )
             )
-            .clickable { id?.let { onClick(it) } }
+            .clickable {
+                id?.let {
+                    onClick(it)
+                }
+            }
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -46,7 +51,6 @@ fun CoffeeCupItem(
                 CupVariant.NORMAL -> R.drawable.normal_medium
                 CupVariant.CREAM -> R.drawable.cream_medium
             }
-
 
             Image(
                 painter = painterResource(id = imageRes),
@@ -59,36 +63,81 @@ fun CoffeeCupItem(
 
             Text(
                 text = name,
-                style = MaterialTheme.typography.titleMedium.copy(color = Color(196, 167, 155)),
+                style = MaterialTheme.typography.titleMedium.copy(
+                    color = Color(196, 167, 155)
+                ),
+                maxLines = 1,
                 modifier = Modifier.padding(vertical = 4.dp)
             )
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(
-                                Color(29, 20, 18),
-                                Color(22, 14, 12),
-                                Color(35, 25, 23)
+            if (!isFree) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            brush = Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color(29, 20, 18),
+                                    Color(22, 14, 12),
+                                    Color(35, 25, 23)
+                                )
                             )
                         )
+                        .padding(horizontal = 4.dp, vertical = 2.dp)
+                ) {
+                    Text(
+                        text = "0.33",
+                        style = MaterialTheme.typography.titleSmall.copy(
+                            color = Color(81, 69, 65)
+                        )
                     )
-                    .padding(horizontal = 4.dp, vertical = 2.dp)
-            ) {
-                Text(
-                    text = price,
-                    style = MaterialTheme.typography.titleMedium.copy(color = Color(247, 116, 22))
-                )
 
-                Text(
-                    text = " Р",
-                    style = MaterialTheme.typography.titleMedium.copy(color = Color(247, 116, 22))
-                )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = price,
+                            style = MaterialTheme.typography.titleMedium.copy(
+                                color = Color(247, 116, 22)
+                            )
+                        )
+
+                        Text(
+                            text = " ₽",
+                            style = MaterialTheme.typography.titleMedium.copy(
+                                color = Color(247, 116, 22)
+                            )
+                        )
+                    }
+                }
+            } else {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            brush = Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color(29, 20, 18),
+                                    Color(22, 14, 12),
+                                    Color(35, 25, 23)
+                                )
+                            )
+                        )
+                        .padding(horizontal = 4.dp, vertical = 2.dp)
+                ) {
+                    Text(
+                        text = "0.33",
+                        style = MaterialTheme.typography.titleSmall.copy(
+                            color = Color(81, 69, 65)
+                        )
+                    )
+                }
             }
         }
     }

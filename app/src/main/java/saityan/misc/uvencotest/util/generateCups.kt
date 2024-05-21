@@ -6,8 +6,8 @@ import saityan.misc.uvencotest.model.CupVariant
 fun generateCups(): List<CoffeeCup> {
     val listOfCups: List<CoffeeCup> = mutableListOf<CoffeeCup>().apply {
         repeat(30) {
-            val price = (10..100).random().toString() // Random price between 10 and 100
-            val isFree = it % 10 == 0 // Mark every 10th cup as free
+            val price = (100..199).random().toString()
+            val isFree = it % 10 == 0
 
             val cup = CoffeeCup(
                 name = "Coffee Cup ${it + 1}",
