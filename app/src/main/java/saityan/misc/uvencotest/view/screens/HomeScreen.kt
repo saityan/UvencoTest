@@ -10,12 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import saityan.misc.uvencotest.navigation.Screen
-import saityan.misc.uvencotest.viewmodel.MainViewModel
+import saityan.misc.uvencotest.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(
     navController: NavHostController,
-    viewModel: MainViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
     val cups = viewModel.cups.collectAsState(initial = emptyList()).value
 

@@ -19,7 +19,7 @@ fun SetupNavGraph(navController: NavHostController) {
             HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.Edit.route,
+            route = Screen.Edit.route + "/{cupId}",
             arguments = listOf(navArgument("cupId") { type = NavType.IntType })
         ) { backStackEntry ->
             val cupId = backStackEntry.arguments?.getInt("cupId") ?: -1
