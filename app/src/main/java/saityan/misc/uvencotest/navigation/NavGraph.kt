@@ -6,8 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import saityan.misc.uvencotest.view.screens.EditScreen
-import saityan.misc.uvencotest.view.screens.HomeScreen
+import saityan.misc.uvencotest.view.screens.edit.EditScreen
+import saityan.misc.uvencotest.view.screens.home.HomeScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {

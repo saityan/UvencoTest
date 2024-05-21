@@ -1,4 +1,4 @@
-package saityan.misc.uvencotest.view.screens
+package saityan.misc.uvencotest.view.screens.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background

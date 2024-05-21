@@ -57,16 +57,12 @@ fun CoffeeCupItem(
                     .height(200.dp)
             )
 
-            Box(
-                modifier = Modifier
-                    .offset(y = (-5).dp)
-            ) {
-                Text(
-                    text = name,
-                    style = MaterialTheme.typography.titleMedium.copy(color = Color(196, 167, 155)),
-                    modifier = Modifier.padding(vertical = 4.dp)
-                )
-            }
+            Text(
+                text = name,
+                style = MaterialTheme.typography.titleMedium.copy(color = Color(196, 167, 155)),
+                modifier = Modifier.padding(vertical = 4.dp)
+            )
+
             Spacer(modifier = Modifier.height(4.dp))
 
             Row(
