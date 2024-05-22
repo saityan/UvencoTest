@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -28,97 +29,103 @@ fun TopBar(
     val currentTime by viewModel.currentTime.collectAsState("")
     val randomNumber by viewModel.randomNumber.collectAsState(0.0f)
 
-    Column {
-        SmallTopAppBar(
-            title = {
-                Text(
-                    text = "RUNERO Touch",
-                    modifier = Modifier.padding(6.dp),
-                    maxLines = 1,
-                    style = MaterialTheme.typography.titleMedium.copy(
-                        color = Color(90, 64, 54)
-                    )
-                )
-            },
-            navigationIcon = {
-                Image(
-                    painter = painterResource(id = R.drawable.union),
-                    contentDescription = null,
-                    modifier = Modifier.size(20.dp)
-                )
-            },
-            actions = {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxHeight()
-                ) {
+    BoxWithConstraints {
+        val screenWidth = with(LocalDensity.current) { constraints.maxWidth.toDp() }
+
+        val horizontalPadding = if (screenWidth < 400.dp) 8.dp else 16.dp
+        val dividerHeight = if (screenWidth < 400.dp) 48.dp else 65.dp
+
+        Column {
+            SmallTopAppBar(
+                title = {
                     Text(
-                        text = currentTime,
-                        modifier = Modifier.padding(horizontal = 32.dp),
+                        text = "RUNERO Touch",
+                        modifier = Modifier.padding(6.dp),
+                        maxLines = 1,
                         style = MaterialTheme.typography.titleMedium.copy(
                             color = Color(90, 64, 54)
                         )
                     )
-
-                    VerticalDivider(
-                        color = Color(90, 64, 54),
-                        height = 100.dp
+                },
+                navigationIcon = {
+                    Image(
+                        painter = painterResource(id = R.drawable.union),
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp)
                     )
-
+                },
+                actions = {
                     Row(
-                        modifier = Modifier.padding(horizontal = 32.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxHeight()
                     ) {
                         Text(
-                            text = String.format("%.1f", randomNumber) + "°",
+                            text = currentTime,
+                            modifier = Modifier.padding(horizontal = horizontalPadding),
                             style = MaterialTheme.typography.titleMedium.copy(
                                 color = Color(90, 64, 54)
                             )
                         )
 
-                        Image(
-                            painter = painterResource(id = R.drawable.temperature_label),
-                            contentDescription = null,
-                            modifier = Modifier.size(12.dp)
-                        )
-                    }
-
-
-                    VerticalDivider(
-                        color = Color(90, 64, 54),
-                        height = 100.dp
-                    )
-
-                    Row(
-                        modifier = Modifier.padding(horizontal = 32.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.icon_ru),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(14.dp)
+                        VerticalDivider(
+                            color = Color(90, 64, 54),
+                            height = dividerHeight
                         )
 
-                        Spacer(modifier = Modifier.width(3.dp))
-
-                        Text(
-                            text = "RU",
-                            style = MaterialTheme.typography.titleMedium.copy(
-                                color = Color(90, 64, 54)
+                        Row(
+                            modifier = Modifier.padding(horizontal = horizontalPadding),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = String.format("%.1f", randomNumber) + "°",
+                                style = MaterialTheme.typography.titleMedium.copy(
+                                    color = Color(90, 64, 54)
+                                )
                             )
+
+                            Image(
+                                painter = painterResource(id = R.drawable.temperature_label),
+                                contentDescription = null,
+                                modifier = Modifier.size(12.dp)
+                            )
+                        }
+
+                        VerticalDivider(
+                            color = Color(90, 64, 54),
+                            height = dividerHeight
                         )
+
+                        Row(
+                            modifier = Modifier.padding(horizontal = horizontalPadding),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Image(
+                                painter = painterResource(id = R.drawable.icon_ru),
+                                contentDescription = null,
+                                modifier = Modifier.size(14.dp)
+                            )
+
+                            Spacer(modifier = Modifier.width(3.dp))
+
+                            Text(
+                                text = "RU",
+                                style = MaterialTheme.typography.titleMedium.copy(
+                                    color = Color(90, 64, 54)
+                                )
+                            )
+                        }
                     }
-                }
-            },
-            colors = TopAppBarDefaults.smallTopAppBarColors(
-                containerColor = Color.Black,
-                titleContentColor = Color.White,
-                navigationIconContentColor = Color.White,
-                actionIconContentColor = Color.White
+                },
+                colors = TopAppBarDefaults.smallTopAppBarColors(
+                    containerColor = Color.Black,
+                    titleContentColor = Color.White,
+                    navigationIconContentColor = Color.White,
+                    actionIconContentColor = Color.White
+                ),
+                modifier = Modifier.wrapContentSize()
             )
-        )
-        HorizontalDivider()
+            HorizontalDivider()
+        }
     }
 }
 
