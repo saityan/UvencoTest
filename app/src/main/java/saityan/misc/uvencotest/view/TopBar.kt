@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -33,13 +34,13 @@ fun TopBar(
         val screenWidth = with(LocalDensity.current) { constraints.maxWidth.toDp() }
 
         val horizontalPadding = if (screenWidth < 400.dp) 8.dp else 16.dp
-        val dividerHeight = if (screenWidth < 400.dp) 48.dp else 65.dp
+        val dividerHeight = 65.dp
 
         Column {
             SmallTopAppBar(
                 title = {
                     Text(
-                        text = "RUNERO Touch",
+                        text = stringResource(id = R.string.main_title),
                         modifier = Modifier.padding(6.dp),
                         maxLines = 1,
                         style = MaterialTheme.typography.titleMedium.copy(

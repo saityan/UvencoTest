@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">UvencoTest</string>
+    <string name="main_title">RUNERO Touch</string>
     <string name="price_label">Цена</string>
     <string name="name_label">Наименование</string>
     <string name="is_free_label">Бесплатно</string>
